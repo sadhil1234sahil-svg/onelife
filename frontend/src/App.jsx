@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation, useNavigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation, useNavigate, Link } from 'react-router-dom';
 import { SiteProvider } from './context/SiteContext';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -11,6 +11,7 @@ import Tourism from './pages/Tourism';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import AdminDashboard from './pages/Admin/AdminDashboard';
+import { Sparkles } from 'lucide-react';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -60,6 +61,21 @@ function MainLayout() {
       </main>
       {!isAdmin && <EnquiryModal />}
       {!isAdmin && !isOption2 && <Footer />}
+
+      {/* Persistent 1-Click Design Switcher Pill */}
+      {!isAdmin && (
+        <div className="fixed bottom-6 right-6 z-50">
+          <Link
+            to={isOption2 ? "/" : "/option-2"}
+            className="flex items-center gap-2.5 px-4 sm:px-5 py-3 rounded-full bg-neutral-950/90 hover:bg-black text-white text-xs font-bold backdrop-blur-xl border border-white/25 shadow-2xl transition-all transform hover:scale-105 active:scale-95 group"
+          >
+            <Sparkles className="w-4 h-4 text-[#ff5500] animate-pulse" />
+            <span>
+              {isOption2 ? 'Switch to Design Option 1 (Marquee)' : 'Switch to Design Option 2 (Bromo Mockup)'}
+            </span>
+          </Link>
+        </div>
+      )}
     </div>
   );
 }
