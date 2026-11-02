@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useSite } from '../context/SiteContext';
-import { Menu, X, Compass, Search, Phone, Globe } from 'lucide-react';
+import { Menu, X, Compass, Search, Phone, Globe, Sparkles } from 'lucide-react';
 
 export default function Navbar() {
   const { settings, openEnquiryModal } = useSite();
@@ -58,7 +58,15 @@ export default function Navbar() {
           </nav>
 
           {/* Right Action Buttons */}
-          <div className="hidden md:flex items-center gap-3.5">
+          <div className="hidden md:flex items-center gap-3">
+            <Link
+              to="/option-2"
+              className="text-xs font-bold px-3 py-1.5 rounded-full bg-orange-50 text-[#ff5500] hover:bg-orange-100 transition-colors border border-orange-200/70 shadow-xs flex items-center gap-1.5"
+            >
+              <Sparkles className="w-3.5 h-3.5 text-[#ff5500]" />
+              <span>Design Option 2</span>
+            </Link>
+
             <button
               onClick={() => openEnquiryModal({ interest: 'Both' })}
               className="p-2.5 rounded-full text-neutral-600 hover:text-[#ff5500] hover:bg-neutral-50 transition-colors"

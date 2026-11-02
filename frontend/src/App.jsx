@@ -5,6 +5,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import EnquiryModal from './components/EnquiryModal';
 import Home from './pages/Home';
+import HomeOption2 from './pages/HomeOption2';
 import Visas from './pages/Visas';
 import Tourism from './pages/Tourism';
 import About from './pages/About';
@@ -25,6 +26,7 @@ function MainLayout() {
   const location = useLocation();
   const navigate = useNavigate();
   const isAdmin = location.pathname.startsWith('/admin');
+  const isOption2 = location.pathname === '/option-2' || location.pathname === '/v2';
 
   // Secret admin shortcut: Ctrl + Shift + A (or Cmd + Shift + A)
   useEffect(() => {
@@ -41,10 +43,12 @@ function MainLayout() {
   return (
     <div className="flex flex-col min-h-screen">
       <ScrollToTop />
-      {!isAdmin && <Navbar />}
+      {!isAdmin && !isOption2 && <Navbar />}
       <main className="flex-1">
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/option-2" element={<HomeOption2 />} />
+          <Route path="/v2" element={<HomeOption2 />} />
           <Route path="/visa" element={<Visas />} />
           <Route path="/visas" element={<Visas />} />
           <Route path="/tourism" element={<Tourism />} />
@@ -55,7 +59,7 @@ function MainLayout() {
         </Routes>
       </main>
       {!isAdmin && <EnquiryModal />}
-      {!isAdmin && <Footer />}
+      {!isAdmin && !isOption2 && <Footer />}
     </div>
   );
 }
