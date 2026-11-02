@@ -276,11 +276,16 @@ export default function HomeOption2() {
           </div>
 
           {/* Top Floating Glass Capsule Navbar */}
-          <div className="relative z-20 flex items-center justify-between gap-4">
-            
+          <div 
+            className="relative z-20 flex items-center justify-between gap-4 p-2 sm:p-2.5 rounded-full bg-black/25 hover:bg-black/35 backdrop-blur-2xl border border-white/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.35)] transition-all"
+            style={{
+              WebkitBackdropFilter: 'blur(24px) saturate(190%)',
+              backdropFilter: 'blur(24px) saturate(190%)'
+            }}
+          >
             {/* Brand Logo */}
-            <Link to="/" className="flex items-center gap-2.5">
-              <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center text-white shadow">
+            <Link to="/" className="flex items-center gap-2.5 pl-2 sm:pl-3 group">
+              <div className="w-9 h-9 rounded-full bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center text-white shadow group-hover:scale-105 transition-transform">
                 <Compass className="w-5 h-5 text-[#ff7a00]" />
               </div>
               <span className="text-xl font-black tracking-tight text-white drop-shadow">
@@ -289,32 +294,41 @@ export default function HomeOption2() {
             </Link>
 
             {/* Nav Capsule Links */}
-            <nav className="hidden md:flex items-center gap-1 bg-black/30 backdrop-blur-xl border border-white/15 px-3 py-1.5 rounded-full shadow-lg">
+            <nav className="hidden md:flex items-center gap-1 bg-white/10 backdrop-blur-xl border border-white/15 px-3 py-1.5 rounded-full shadow-inner">
               <Link to="/option-2" className="px-4 py-1.5 rounded-full text-xs font-bold text-neutral-950 bg-white shadow-sm transition-all">
                 Home
               </Link>
-              <Link to="/tourism" className="px-4 py-1.5 rounded-full text-xs font-semibold text-neutral-200 hover:text-white transition-colors">
+              <Link to="/tourism" className="px-4 py-1.5 rounded-full text-xs font-semibold text-neutral-200 hover:text-white hover:bg-white/10 transition-colors">
                 Experiences
               </Link>
-              <Link to="/tourism" className="px-4 py-1.5 rounded-full text-xs font-semibold text-neutral-200 hover:text-white transition-colors">
+              <Link to="/tourism" className="px-4 py-1.5 rounded-full text-xs font-semibold text-neutral-200 hover:text-white hover:bg-white/10 transition-colors">
                 Holiday Packages
               </Link>
-              <Link to="/visa" className="px-4 py-1.5 rounded-full text-xs font-semibold text-neutral-200 hover:text-white transition-colors">
+              <Link to="/visa" className="px-4 py-1.5 rounded-full text-xs font-semibold text-neutral-200 hover:text-white hover:bg-white/10 transition-colors">
                 Visa Services
               </Link>
-              <Link to="/about" className="px-4 py-1.5 rounded-full text-xs font-semibold text-neutral-200 hover:text-white transition-colors">
+              <Link to="/about" className="px-4 py-1.5 rounded-full text-xs font-semibold text-neutral-200 hover:text-white hover:bg-white/10 transition-colors">
                 About
               </Link>
             </nav>
 
-            {/* CTA Button */}
-            <button
-              onClick={() => openEnquiryModal({ interest: 'Both' })}
-              className="bg-white/90 hover:bg-white text-neutral-950 text-xs font-bold px-5 py-2.5 rounded-full shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-0.5 active:translate-y-0 flex items-center gap-1.5"
-            >
-              <span>Book a Tour</span>
-              <ArrowRight className="w-3.5 h-3.5 text-[#ff5500]" />
-            </button>
+            {/* Right Buttons */}
+            <div className="flex items-center gap-2 pr-1">
+              <Link
+                to="/"
+                className="hidden sm:inline-flex items-center gap-1.5 text-xs font-semibold px-3.5 py-2 rounded-full bg-white/15 hover:bg-white/25 text-white backdrop-blur-md border border-white/20 transition-all"
+              >
+                <span>Option 1</span>
+              </Link>
+
+              <button
+                onClick={() => openEnquiryModal({ interest: 'Both' })}
+                className="bg-white/95 hover:bg-white text-neutral-950 text-xs font-bold px-5 py-2.5 rounded-full shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-0.5 active:translate-y-0 flex items-center gap-1.5"
+              >
+                <span>Book a Tour</span>
+                <ArrowRight className="w-3.5 h-3.5 text-[#ff5500]" />
+              </button>
+            </div>
 
           </div>
 
@@ -796,3 +810,4 @@ export default function HomeOption2() {
     </div>
   );
 }
+
